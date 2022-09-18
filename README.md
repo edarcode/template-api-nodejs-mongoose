@@ -1,1 +1,1 @@
-# Template Nodejs, Sequelize-PostgreSQL
+# Template Nodejs, Mongoose
