@@ -1,17 +1,13 @@
 import "dotenv/config";
 import { connDb } from "./src/connDb.js";
 import { PORT } from "./src/env/server.js";
-import { server } from "./src/server.js";
+import { httpServer } from "./src/httpServer.js";
 
-const start = async () => {
-	try {
-		await connDb;
-		server.listen(PORT, () =>
+connDb()
+	.then(() => console.log("Database connection successful"))
+	.then(() => {
+		httpServer.listen(PORT, () =>
 			console.log(`Server running on port: ${PORT} 😎`)
 		);
-	} catch (error) {
-		console.log(error);
-	}
-};
-
-start();
+	})
+	.catch(err => console.log(err));
